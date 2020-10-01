@@ -69,7 +69,7 @@ void paintObj(HWND hWnd, int horizontalPx, int verticalPx) {
 	backgroundCreate(memDC, ps);
 	Gdiplus::Graphics graphics(memDC);
 	Gdiplus::Rect destRect(rect.left, rect.top, RECT_WIDTH, RECT_HEIGHT);
-	Gdiplus::Image image(L"D:\\Для учебы\\ОСИСП\\lab1\\assets\\1.png");
+	Gdiplus::Image image(L"C:\\Users\\Angelina\\Desktop\\1.png");
 	graphics.DrawImage(&image, destRect);
 
 	BitBlt(hdc, left, top, width, height, memDC, left, top, SRCCOPY);
@@ -202,8 +202,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_KEYDOWN:
-		noTimer = true;
-		keyDownAnalyse(hWnd, wParam);
+		if (wParam == VK_SPACE)
+		{
+			noTimer = noTimer ? false : true;
+		}
+		else {
+			noTimer = true;
+			keyDownAnalyse(hWnd, wParam);
+		}
 		break;
 	case WM_MOUSEWHEEL:
 		noTimer = true;
