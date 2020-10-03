@@ -17,7 +17,6 @@ static POINTFLOAT modifierDirection = { 1.0, 1.0 };
 static RECT rect = { 0, 0, RECT_WIDTH, RECT_HEIGHT };
 
 bool noTimer = false;
-clock_t timeStart, timeEnd;
 
 void updateRectValues(RECT& rectToChange, int horizontalPx, int verticalPx) {
 	rectToChange.left += horizontalPx;
@@ -260,7 +259,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	UpdateWindow(handWind);
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
-		TranslateMessage(&msg);
+		//TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
 	Gdiplus::GdiplusShutdown(gdiplusToken);
