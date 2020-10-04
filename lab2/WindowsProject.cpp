@@ -82,6 +82,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	switch (message) {
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
+		SetTextColor(hdc, RGB(163, 16, 124));
 		drawTable(hdc, rect.right, rect.bottom);
 		EndPaint(hWnd, &ps);
 		break;
