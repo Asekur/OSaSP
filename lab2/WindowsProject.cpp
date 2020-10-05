@@ -15,7 +15,7 @@ vector<string> text;
 
 int readFile() {
     string line;
-	ifstream fs("C:\\Users\\Angelina\\Desktop\\NewTest.txt"); //окрываем файл дл€ чтени€
+	ifstream fs("C:\\Users\\Angelina\\Desktop\\NewTest.txt"); //окрываем файл
 	if (fs.is_open())
 	{
 		while (getline(fs, line))
@@ -57,8 +57,8 @@ void drawTable(HDC hdc, int windowWidth, int windowHeight) {
 			cell.right = (colIndex + 1) * colomnWidth - 5;
 
 			const CHAR* str = text[rowIndex++].c_str();
-
-			int currTextHeight = DrawTextA(hdc, (LPCSTR)str, strlen(str), &cell, DT_VCENTER | DT_WORDBREAK | DT_NOCLIP | DT_EDITCONTROL);
+			int currTextHeight = DrawTextA(hdc, (LPCSTR)str, strlen(str), &cell, DT_WORDBREAK | DT_NOCLIP | DT_EDITCONTROL);
+			//перенос слов, регул€тор высоты текста без обрезани€, разбивает текст дл€ вмещени€ в пр€моугольник 
 
 			//вычисление максимальной высоты €чейки
 			if (currTextHeight > maxTextHeight)
@@ -125,7 +125,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		hInstance, nullptr); //дескриптор приложени€
 
 	ShowWindow(handWind, nCmdShow);
-	UpdateWindow(handWind);
 
 	while (GetMessage(&msg, nullptr, 0, 0)) {
 		TranslateMessage(&msg);
